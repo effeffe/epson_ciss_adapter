@@ -19,15 +19,19 @@
 //Variables
 $fn=100;
 
-walls_thickness = 7;//was 2 before, but 7 should avoid needing structures to print this
-hair_hole = 2;
-
+air_hole = 2;
+air_offset = 6.5;
 inlet_outer_dia = 10;
 inlet_inner_dia = 6;
+inlet_height = 10;
+cylinder_diameter = 20;
+cylinder_height = 30;
+
 
 ring_offset = 20;
 ring_height = 3;
 ring_thickness = 5;
+ring_vertical_offset = -5;
 
 edge_height = 3;
 edge_thickness = 2;
@@ -48,30 +52,30 @@ difference(){
         cube([5,20,25]);
 
         //air hole
-        translate([7,0,0])
-        cylinder(h=30, d=hair_hole);
+        translate([air_offset,0,0])
+        cylinder(h=30, d=air_hole);
         }
     }
     translate([0,0,25])
     cylinder(h=7, d= inlet_inner_dia);
 
     //air hole
-    translate([7,0,25])
-    cylinder(h=5,d= hair_hole);
+    translate([air_offset,0,25])
+    cylinder(h=5,d= air_hole);
 
 }
 */
 difference(){
     translate([0,0,0])
-    cylinder(h = 30, d=20);
+    cylinder(h = cylinder_height, d=cylinder_diameter);
     
     translate([0,0,0])
     //cylinder(h=30, d= 20 - (walls_thickness*2));
-    cylinder(h=30, d= inlet_inner_dia);
+    cylinder(h=cylinder_height, d= inlet_inner_dia);
 
     //air hole
-    translate([7,0,0])
-    cylinder(h=30, d=hair_hole);
+    translate([air_offset,0,0])
+    cylinder(h=cylinder_height, d=air_hole);
 }
 
 //outer ring
@@ -84,27 +88,27 @@ difference(){
 }*/
 //outer cone (better than a ring)
 difference(){
-    translate([0,0,-5])
+    translate([0,0,ring_vertical_offset])
     cylinder(h = ring_offset+10, r1=0, r2 = 10 + ring_thickness/2);
-    translate([0,0,-5])
-    cylinder(h = 30 + 5, d = 20);
+    translate([0,0,ring_vertical_offset])
+    cylinder(h = cylinder_height + ring_vertical_offset, d = cylinder_diameter);
     //2mm thick walls
 }
 
 
 //small edge
 difference(){
-translate([0,0,30])
-cylinder(h = edge_height, d=20);
-translate([0,0,30])
-    cylinder(h=edge_height, d= 20 - (edge_thickness*2));
+translate([0,0,cylinder_height])
+cylinder(h = edge_height, d=cylinder_diameter);
+translate([0,0,cylinder_height])
+    cylinder(h=edge_height, d= cylinder_diameter - (edge_thickness*2));
 }
 
 //inlet
 difference(){
-translate([0,0,30])
-cylinder(h=10,d=inlet_outer_dia);
+translate([0,0,cylinder_height])
+cylinder(h=inlet_height,d=inlet_outer_dia);
 
-translate([0,0,30])
-cylinder(h=10,d=inlet_inner_dia);
+translate([0,0,cylinder_height])
+cylinder(h=inlet_height,d=inlet_inner_dia);
 }
