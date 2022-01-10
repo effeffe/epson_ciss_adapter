@@ -86,15 +86,16 @@ difference(){
     cylinder(h = ring_height, d = 20);
     //2mm thick walls
 }*/
+
 //outer cone (better than a ring)
 difference(){
     translate([0,0,ring_vertical_offset])
     cylinder(h = ring_offset+10, r1=0, r2 = 10 + ring_thickness/2);
+    
     translate([0,0,ring_vertical_offset])
-    cylinder(h = cylinder_height + ring_vertical_offset, d = cylinder_diameter);
+    cylinder(h = cylinder_height + 5, d = cylinder_diameter);
     //2mm thick walls
 }
-
 
 //small edge
 difference(){
