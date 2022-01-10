@@ -17,3 +17,8 @@ The main purpose of this project is to create an adapter to these bottle range, 
 
 ## State of the project
 Currently work in progress, at the moment the inlet cylinder has been designed with arbitrary dimensions. These should be verified, as well as the efficacy of the connection cylinder.
+
+The idea is to have 4 adapters, one per ink bottle, and rinse them with water after use. open the tank, position the adapter, fill the tanks and close it.
+Rinse and dry the adapters after use, so that if the relevant colors get mixed up it is not a problem.
+
+Otherwise, label them!
