@@ -17,3 +17,7 @@ The main purpose of this project is to create an adapter to these bottle range, 
 
 ## State of the project
 Currently work in progress, at the moment the inlet cylinder has been designed with arbitrary dimensions. These should be verified, as well as the efficacy of the connection cylinder.
+
+
+### print tests
+- epson_ink_adapter-cone-measurements_test with 50% infill, adhesion, no supports, 0.16? precision? (need 0.5mm precision possibly)
