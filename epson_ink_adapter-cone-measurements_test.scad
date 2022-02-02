@@ -20,11 +20,12 @@
 $fn=100;
 
 air_hole = 2;
-air_offset = 6.5;
+air_offset = 4;
 inlet_outer_dia = 6.5;
 inlet_inner_dia = 5;
 inlet_height = 7+3;
 cylinder_diameter = 20;
+cylinder_diameter_1 = 30;
 cylinder_height = 30;
 //lower diameter is currently 10mm diameter, which looks ok
 
@@ -53,9 +54,10 @@ difference(){
 //small edge
 difference(){
 translate([0,0,cylinder_height])
-cylinder(h = edge_height, d=cylinder_diameter);
+cylinder(h = edge_height, d=cylinder_diameter_1);
+    
 translate([0,0,cylinder_height])
-    cylinder(h=edge_height, d= cylinder_diameter - (edge_thickness*2));
+    cylinder(h=edge_height, d= cylinder_diameter_1 - (edge_thickness*2));
 }
 
 //inlet
