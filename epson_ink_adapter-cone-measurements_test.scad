@@ -16,14 +16,19 @@
 * epson refill inlet diameter
 */
 
+/*comments on first attempt:
+* C1. cone is good, but a cylinder is still required on the bit, as the tip of it should go all the way in for about 0.5-1cm (0.75 should be good
+* C2. the connection with the ink bottle is good, but 0.5cm more would be perfect
+* C3. the air hole is too much on the side, and is quite small for the ink to pass through in case of leakage. it should go all the way in too! (i.e. shift it? place it diagonally?)
+*/
 //Variables
 $fn=100;
 
 air_hole = 2;
-air_offset = 4;
+air_offset = 3.5;
 inlet_outer_dia = 6.5;
 inlet_inner_dia = 5;
-inlet_height = 7+3;
+inlet_height = 12+3;//C.2
 cylinder_diameter = 20;
 cylinder_diameter_1 = 30;
 cylinder_height = 30;
@@ -49,6 +54,35 @@ difference(){
     //air hole
     translate([air_offset,0,0])
     cylinder(h=cylinder_height, d=air_hole);
+    
+    translate([air_offset+1,0,cylinder_height-5])
+    cylinder(h=5, d=air_hole);
+
+    
+    //tip that goes into the tank
+    difference(){
+        translate([0,0,0])
+        cylinder(h=7.5, d=30);
+        
+        translate([0,0,0])
+        cylinder(h=7.5, d=10);
+    }
+    
+    //air holes all around
+    translate([0,5,0]) cylinder(h=7.5, d=2);
+    translate([0,4,7.5]) rotate([-90,0,0]) cylinder(h=7.5, d=2);
+    translate([0,-5,0]) cylinder(h=7.5, d=2);
+    translate([0,-4,7.5]) rotate([90,0,0]) cylinder(h=7.5, d=2);
+    translate([-5,0,0]) cylinder(h=7.5, d=2);
+    translate([-4,0,7.5]) rotate([0,-90,0]) cylinder(h=7.5, d=2);
+    translate([3.5,3.5,0]) cylinder(h=7.5, d=2);
+    translate([2.5,2.5,7.5]) rotate([90,0,135]) cylinder(h=7.5, d=2);
+    translate([3.5,-3.5,0]) cylinder(h=7.5, d=2);
+    translate([2.5,-2.5,7.5]) rotate([90,0,45]) cylinder(h=7.5, d=2);
+    translate([-3.5,3.5,0]) cylinder(h=7.5, d=2);
+    translate([-2.5,2.5,7.5]) rotate([90,0,-135]) cylinder(h=7.5, d=2);
+    translate([-3.5,-3.5,0]) cylinder(h=7.5, d=2);
+    translate([-2.5,-2.5,7.5]) rotate([90,0,-45]) cylinder(h=7.5, d=2);
 }
 
 //small edge
